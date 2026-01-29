@@ -123,6 +123,51 @@
 
   </div>
 
+    <section style="padding:25px; background:#f0fff4;">
+  <h2>🛒 Order Medicines Online</h2>
+
+  <input id="cname" placeholder="Customer Name" required style="width:100%; padding:10px;"><br><br>
+  <input id="cmobile" placeholder="Mobile Number" required style="width:100%; padding:10px;"><br><br>
+  <textarea id="caddress" placeholder="Delivery Address" required style="width:100%; padding:10px;"></textarea><br><br>
+  <textarea id="corder" placeholder="Medicine Name & Quantity" required style="width:100%; padding:10px;"></textarea><br><br>
+
+  <button onclick="placeOrder()" style="background:green;color:white;padding:12px 25px;border:none;font-size:18px;">
+    Order Now
+  </button>
+
+  <p id="status" style="margin-top:10px;color:green;"></p>
+</section>
+
+<script>
+function placeOrder() {
+  const name = document.getElementById("cname").value;
+  const mobile = document.getElementById("cmobile").value;
+  const address = document.getElementById("caddress").value;
+  const order = document.getElementById("corder").value;
+
+  if (!name || !mobile || !address || !order) {
+    alert("Please fill all details");
+    return;
+  }
+
+  document.getElementById("status").innerText =
+    "Sending order to Kalawati Medical on WhatsApp…";
+
+  const msg =
+    "*🛒 New Website Order*%0A%0A" +
+    "*Name:* " + name + "%0A" +
+    "*Mobile:* " + mobile + "%0A" +
+    "*Address:* " + address + "%0A%0A" +
+    "*Order:* %0A" + order;
+
+  window.open(
+    "https://wa.me/9182106668610?text=" + msg,
+    "_blank"
+  );
+}
+</script>
+
+
     <section id="medicine-section">
 
   <style>
