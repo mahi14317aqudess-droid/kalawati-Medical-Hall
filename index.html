@@ -235,6 +235,56 @@ updateStoreStatus();
   </div>
 </section>
 
+<!-- 🐒 Front-facing Monkey Attraction -->
+<div id="monkey-front">
+  🐒
+  <div class="monkey-text">Order Medicines Now!</div>
+</div>
+
+<style>
+#monkey-front {
+  position: fixed;
+  bottom: 140px;
+  right: 20px;
+  text-align: center;
+  font-size: 48px;
+  z-index: 99999;
+  animation: monkeyJump 2s infinite ease-in-out;
+}
+
+.monkey-text {
+  font-size: 14px;
+  background: #1faa59;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 14px;
+  margin-top: 6px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+@keyframes monkeyJump {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+</style>
+
+<script>
+const texts = [
+  "💊 Order Medicines Now!",
+  "🚚 Free Delivery above ₹1000",
+  "📞 Call to Check Medicine",
+  "⏱ Fast Delivery",
+  "🏥 Trusted Medical Store"
+];
+
+setInterval(() => {
+  document.querySelector(".monkey-text").innerText =
+    texts[Math.floor(Math.random() * texts.length)];
+}, 2500);
+</script>
+
   
   <div class="container">
   <section>
