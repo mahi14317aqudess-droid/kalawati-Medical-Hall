@@ -274,7 +274,88 @@ function placeOrder() {
   </div>
 
 </section>
+<style>
+.prescription-box {
+  background: #f0fff4;
+  padding: 25px;
+  border-radius: 15px;
+  margin-top: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
 
+.prescription-box h2 {
+  margin-bottom: 10px;
+}
+
+.prescription-box p {
+  font-size: 14px;
+  color: #444;
+}
+
+.prescription-box input,
+.prescription-box textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.prescription-box button {
+  background: green;
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+</style>
+
+<section class="prescription-box">
+  <h2>📸 Upload Prescription</h2>
+  <p>Upload your doctor’s prescription and we will prepare your medicines.</p>
+
+  <input id="pname" placeholder="Your Name">
+  <input id="pphone" placeholder="Mobile Number">
+  <textarea id="paddress" placeholder="Delivery Address"></textarea>
+
+  <input type="file" id="prescription" accept="image/*">
+
+  <button onclick="sendPrescription()">Send Prescription</button>
+</section>
+
+<script>
+function sendPrescription() {
+  const name = document.getElementById("pname").value;
+  const phone = document.getElementById("pphone").value;
+  const address = document.getElementById("paddress").value;
+  const file = document.getElementById("prescription").files.length;
+
+  if (!name || !phone || !address || !file) {
+    alert("Please fill all details and upload prescription");
+    return;
+  }
+
+  const msg =
+    "*📸 Prescription Order*%0A%0A" +
+    "Name: " + name + "%0A" +
+    "Phone: " + phone + "%0A" +
+    "Address: " + address + "%0A%0A" +
+    "Please find prescription image attached.";
+
+  alert("WhatsApp will open. Please attach the prescription image and send.");
+
+  window.open(
+    "https://wa.me/9182106668610?text=" + msg,
+    "_blank"
+  );
+}
+</script>
+
+    
 <style>
 /* ===== Sticky Delivery Badge ===== */
 #stickyBadge {
