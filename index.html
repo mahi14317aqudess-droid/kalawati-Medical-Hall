@@ -102,6 +102,72 @@
 
 <body>
 
+<style>
+.store-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 15px;
+  margin: 20px 0;
+}
+
+.open {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.closed {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+</style>
+
+<div id="storeStatus" class="store-status">
+  <span class="dot"></span>
+  <span id="statusText"></span>
+</div>
+
+<script>
+function updateStoreStatus() {
+  const now = new Date();
+  const hour = now.getHours();
+  const minute = now.getMinutes();
+
+  // Store timing: 9 AM to 10 PM
+  const openTime = 9;
+  const closeTime = 22;
+
+  const statusBox = document.getElementById("storeStatus");
+  const statusText = document.getElementById("statusText");
+  const dot = statusBox.querySelector(".dot");
+
+  if (hour >= openTime && hour < closeTime) {
+    statusBox.classList.add("open");
+    statusBox.classList.remove("closed");
+    dot.style.background = "green";
+    statusText.innerText = "🟢 Open Now (Closes at 10 PM)";
+  } else {
+    statusBox.classList.add("closed");
+    statusBox.classList.remove("open");
+    dot.style.background = "red";
+    statusText.innerText = "🔴 Closed (Opens at 9 AM)";
+  }
+}
+
+// Run on page load
+updateStoreStatus();
+</script>
+
+  
 <header>
   <h1>Kalawati Medical Store</h1>
   <p>Trusted Medical Store Near Sarkari Hospital</p>
